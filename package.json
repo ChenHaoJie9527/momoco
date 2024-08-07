@@ -1,0 +1,32 @@
+{
+  "name": "momoco",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "lint": "eslint . --ext .js,.mjs,.cjs,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.mjs,.cjs,.ts,.tsx --fix",
+    "format": "prettier --write \"**/*.{js,mjs,cjs,ts,tsx,json,md}\"",
+    "check-format": "prettier --check \"**/*.{js,mjs,cjs,ts,tsx,json,md}\""
+  },
+  "keywords": [],
+  "author": "",
+  "dependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.x"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "server"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.17.0",
+    "@typescript-eslint/parser": "^7.17.0",
+    "eslint": "^8.x",
+    "prettier": "^3.x"
+  },
+  "prettier": "./prettier.config.mjs"
+}
