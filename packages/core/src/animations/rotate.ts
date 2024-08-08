@@ -1,7 +1,7 @@
 import { RotateOptions } from "../types"
 
 export function rotateSvg(svgElement: SVGElement, options: RotateOptions = {}) {
-  const { duration = 2000, easing = 'linear', delay = 0, iterations = 'infinite', direction = 'normal' } = options
+  const { duration = 2000, easing = 'linear', delay = 0, iterations = Infinity, direction = 'normal' } = options
 
   // 确保元素有一个transform-origin
   svgElement.style.transformOrigin = 'center'

@@ -25,20 +25,41 @@
   <body>
     <div class="container">
       <h1>SVG Loader Test</h1>
-      <div id="circleLoader" class="loader"></div>
-      <div id="rotatingCircleLoader" class="loader"></div>
+      <svg
+        id="sunIcon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide"
+      >
+        <path d="M12 2v4" />
+        <path d="m16.2 7.8 2.9-2.9" />
+        <path d="M18 12h4" />
+        <path d="m16.2 16.2 2.9 2.9" />
+        <path d="M12 18v4" />
+        <path d="m4.9 19.1 2.9-2.9" />
+        <path d="M2 12h4" />
+        <path d="m4.9 4.9 2.9 2.9" />
+      </svg>
+      <svg id="customSvgLoader" width="100" height="100" viewBox="0 0 100 100">
+        <rect x="25" y="25" width="50" height="50" fill="#34495e" />
+        <circle cx="50" cy="50" r="20" fill="#3498db" />
+      </svg>
     </div>
     <script type="module">
       import { createCircleLoader, rotateSvg } from '../dist/index.mjs';
+      const sunIcon = document.getElementById('sunIcon');
+      rotateSvg(sunIcon, { duration: 2000, iterations: Infinity, direction: 'normal' });
 
-      // 创建基本的圆形加载器
-      const circleLoader = createCircleLoader({ size: 50, color: '#3498db' });
-      document.getElementById('circleLoader').appendChild(circleLoader);
-
-      // // 创建旋转的圆形加载器
-      const rotatingCircleLoader = createCircleLoader({ size: 50, color: '#e74c3c' });
-      rotateSvg(rotatingCircleLoader, { duration: 2000,  iterations: 1 });
-      document.getElementById('rotatingCircleLoader').appendChild(rotatingCircleLoader);
+      // 旋转自定义SVG内的特定元素
+      const customSvg = document.getElementById('customSvgLoader');
+      rotateSvg(customSvg, { duration: 3000, easing: 'linear', iterations: Infinity, });
     </script>
   </body>
 </html>
