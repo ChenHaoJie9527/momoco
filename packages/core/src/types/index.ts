@@ -14,5 +14,5 @@ export interface RotateOptions {
   easing?: string;
   delay?: number;
   direction?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse';
-  iterations?: number | 'infinite';
+  iterations?: any;
 }
