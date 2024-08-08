@@ -8,3 +8,11 @@ export interface IconOptions {
 export type SVGAttribute = {
   [key: string]: string | number;
 }
+
+export interface RotateOptions {
+  duration?: number;
+  easing?: string;
+  delay?: number;
+  direction?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse';
+  iterations?: number | 'infinite';
+}
