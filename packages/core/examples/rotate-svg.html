@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rotate-svg</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        text-align: center;
+      }
+      .loader {
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>SVG Loader Test</h1>
+      <div id="circleLoader" class="loader"></div>
+      <div id="rotatingCircleLoader" class="loader"></div>
+    </div>
+    <script type="module">
+      import { createCircleLoader, rotateSvg } from '../dist/index.mjs';
+
+      // 创建基本的圆形加载器
+      const circleLoader = createCircleLoader({ size: 50, color: '#3498db' });
+      document.getElementById('circleLoader').appendChild(circleLoader);
+
+      // // 创建旋转的圆形加载器
+      const rotatingCircleLoader = createCircleLoader({ size: 50, color: '#e74c3c' });
+      rotateSvg(rotatingCircleLoader, { duration: 2000,  iterations: 1 });
+      document.getElementById('rotatingCircleLoader').appendChild(rotatingCircleLoader);
+    </script>
+  </body>
+</html>
