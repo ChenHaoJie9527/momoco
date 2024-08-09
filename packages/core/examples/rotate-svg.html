@@ -54,6 +54,7 @@
     </div>
     <script type="module">
       import { createCircleLoader, rotateSvg } from '../dist/index.mjs';
+      // 使用rotateSvg指定svg旋转
       const sunIcon = document.getElementById('sunIcon');
       rotateSvg(sunIcon, { duration: 2000, iterations: Infinity, direction: 'normal' });
 
