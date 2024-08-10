@@ -23,6 +23,7 @@ export function editSvg(svgElement: SVGElement, operation: SVGOperation) {
     case OPERATION_TYPE.changeColor:
       break;
     case OPERATION_TYPE.modifyPath:
+      modifyPath(svgElement, operation.selector, operation.newPath)
       break;
     case OPERATION_TYPE.changeColor:
       break;
@@ -52,6 +53,15 @@ export function removeChild(svgElement: SVGElement, selector: string) {
   const element = svgElement.querySelector(selector);
   if (element) {
     svgElement.removeChild(element);
+  } else {
+    console.error('Element not found', selector);
+  }
+}
+
+export function modifyPath(svgElement: SVGElement, selector: string, path: string) {
+  const element = svgElement.querySelector(selector);
+  if (element) {
+    element.setAttribute('d', path);
   } else {
     console.error('Element not found', selector);
   }
