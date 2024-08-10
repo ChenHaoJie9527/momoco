@@ -40,8 +40,8 @@ export interface RemoveChildOperation {
 
 export interface ResizeOperation {
   type: 'resize';
-  width: string;
-  height: string;
+  width: number;
+  height: number;
 }
 
 export interface ModifyPathOperation {
