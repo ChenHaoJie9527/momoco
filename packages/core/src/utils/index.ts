@@ -27,6 +27,9 @@ export function editSvg(svgElement: SVGElement, operation: SVGOperation) {
       break;
     case OPERATION_TYPE.changeColor:
       break;
+    case OPERATION_TYPE.resize:
+      resizeSVG(svgElement, operation.width, operation.height)
+      break;
     default:
       console.error('Invalid operation type', operation.type);
   }
@@ -65,4 +68,12 @@ export function modifyPath(svgElement: SVGElement, selector: string, path: strin
   } else {
     console.error('Element not found', selector);
   }
+}
+
+export function resizeSVG(svgElement: SVGElement, width: number, height: number) {
+  svgElement.setAttribute('width', `${width}px`);
+  svgElement.setAttribute('height', `${height}px`);
+
+  // TODO: 可能需要调整viewBox
+  // svgElement.setAttribute('viewBox', `0 0 ${width} ${height}`)
 }
