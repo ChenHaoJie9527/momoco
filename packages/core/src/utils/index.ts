@@ -26,6 +26,7 @@ export function editSvg(svgElement: SVGElement, operation: SVGOperation) {
       modifyPath(svgElement, operation.selector, operation.newPath)
       break;
     case OPERATION_TYPE.changeColor:
+      changeColor(svgElement, operation.selector, operation.colorType, operation.color)
       break;
     case OPERATION_TYPE.resize:
       resizeSVG(svgElement, operation.width, operation.height)
@@ -76,4 +77,13 @@ export function resizeSVG(svgElement: SVGElement, width: number, height: number)
 
   // TODO: 可能需要调整viewBox
   // svgElement.setAttribute('viewBox', `0 0 ${width} ${height}`)
+}
+
+export function changeColor(svgElement: SVGElement, selector: string | undefined, colorType: 'fill' | 'stroke', color: string) {
+  const elements = selector ? svgElement.querySelectorAll(selector) : [svgElement]
+  elements.forEach(element => {
+    if (element instanceof SVGElement) {
+      element.setAttribute(colorType, color)
+    }
+  })
 }
