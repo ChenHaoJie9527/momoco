@@ -15,6 +15,7 @@ export function editSvg(svgElement: SVGElement, operation: SVGOperation) {
       appendChild(svgElement, operation.elementType, operation.attributes)
       break;
     case OPERATION_TYPE.removeChild:
+      removeChild(svgElement, operation.selector)
       break;
     case OPERATION_TYPE.setAttribute:
       setAttribute(svgElement, operation.selector, operation.attribute, operation.value);
@@ -32,7 +33,7 @@ export function editSvg(svgElement: SVGElement, operation: SVGOperation) {
   return svgElement;
 }
 
-function setAttribute(svgElement: SVGElement, selector: string | undefined, attribute: string, value: string) {
+export function setAttribute(svgElement: SVGElement, selector: string | undefined, attribute: string, value: string) {
   const element = selector ? svgElement.querySelector(selector) : svgElement;
   if (element) {
     element.setAttribute(attribute, value);
@@ -41,8 +42,17 @@ function setAttribute(svgElement: SVGElement, selector: string | undefined, attr
   }
 }
 
-function appendChild(svgElement: SVGElement, elementType: string, attributes: Record<string, string> = {}) {
+export function appendChild(svgElement: SVGElement, elementType: string, attributes: Record<string, string> = {}) {
   const newElement = document.createElementNS('http://www.w3.org/2000/svg', elementType);
   Object.entries(attributes).forEach(([attr, value]) => newElement.setAttribute(attr, value));
   svgElement.appendChild(newElement);
+}
+
+export function removeChild(svgElement: SVGElement, selector: string) {
+  const element = svgElement.querySelector(selector);
+  if (element) {
+    svgElement.removeChild(element);
+  } else {
+    console.error('Element not found', selector);
+  }
 }
