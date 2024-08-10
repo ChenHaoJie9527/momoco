@@ -10,7 +10,9 @@ export default defineConfig({
       fileName: (format) => `index.${format === 'es' ? 'mjs' : 'js'}`,
     },
     rollupOptions: {
-      external: [],
+      external: [
+
+      ],
     },
   },
   plugins: [dts()],
