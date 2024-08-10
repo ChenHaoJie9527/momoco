@@ -12,6 +12,7 @@ export function editSvg(svgElement: SVGElement, operation: SVGOperation) {
 
   switch (operation.type) {
     case OPERATION_TYPE.appendChild:
+      appendChild(svgElement, operation.elementType, operation.attributes)
       break;
     case OPERATION_TYPE.removeChild:
       break;
@@ -32,7 +33,7 @@ export function editSvg(svgElement: SVGElement, operation: SVGOperation) {
 }
 
 function setAttribute(svgElement: SVGElement, selector: string | undefined, attribute: string, value: string) {
-  const element = selector? svgElement.querySelector(selector) : svgElement;
+  const element = selector ? svgElement.querySelector(selector) : svgElement;
   if (element) {
     element.setAttribute(attribute, value);
   } else {
@@ -40,5 +41,8 @@ function setAttribute(svgElement: SVGElement, selector: string | undefined, attr
   }
 }
 
-function appendChild(svgElement, elementType, attributes) {
+function appendChild(svgElement: SVGElement, elementType: string, attributes: Record<string, string> = {}) {
+  const newElement = document.createElementNS('http://www.w3.org/2000/svg', elementType);
+  Object.entries(attributes).forEach(([attr, value]) => newElement.setAttribute(attr, value));
+  svgElement.appendChild(newElement);
 }
