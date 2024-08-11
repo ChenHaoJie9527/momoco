@@ -51,9 +51,11 @@
         <rect x="25" y="25" width="50" height="50" fill="#34495e" />
         <circle cx="50" cy="50" r="20" fill="#3498db" />
       </svg>
+
+      <div class="box"></div>
     </div>
     <script type="module">
-      import { createCircleLoader, rotateSvg } from '../dist/index.mjs';
+      import { rotateSvg, getLoaderIcons } from '../dist/index.mjs';
       // 使用rotateSvg指定svg旋转
       const sunIcon = document.getElementById('sunIcon');
       rotateSvg(sunIcon, { duration: 2000, iterations: Infinity, direction: 'normal' });
@@ -61,6 +63,11 @@
       // 旋转自定义SVG内的特定元素
       const customSvg = document.getElementById('customSvgLoader');
       rotateSvg(customSvg, { duration: 3000, easing: 'linear', iterations: Infinity, });
+
+      // 读取指定的svg 插入dom
+      const box = document.querySelector('.box')
+      const svgLoader = getLoaderIcons('revolve/revolve1');
+      box.innerHTML = svgLoader.svg
     </script>
   </body>
 </html>
