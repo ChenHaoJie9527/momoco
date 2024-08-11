@@ -1,5 +1,4 @@
-import fs from "fs"
-import path from "path"
+import { icons } from "../compiledIcons"
 
 export interface LoaderIcon {
   name: string;
@@ -7,41 +6,17 @@ export interface LoaderIcon {
   category?: string;
 }
 
-const iconDir = path.join(__dirname, "../icons")
+const loaderIcons: LoaderIcon[] = Object.entries(icons).map(([name, data]) => ({
+  name,
+  svg: data.svg,
+  category: data.category
+}))
 
-function readSvgFilesRecursively(dir: string, baseDir: string = dir): LoaderIcon[] {
-  let results: LoaderIcon[] = []
-  const list = fs.readdirSync(dir)
-
-  list.forEach(file => {
-    const filePath = path.join(dir, file)
-    const stat = fs.statSync(filePath)
-    if (stat && stat.isDirectory()) {
-      results = results.concat(readSvgFilesRecursively(filePath, baseDir))
-    } else if (path.extname(file).toLowerCase() === ".svg") {
-      const category = path.relative(baseDir, dir)
-      const name = path.join(category, path.basename(file, '.svg')).replace(/\\/g, '/')
-      results.push({
-        name,
-        svg: fs.readFileSync(filePath, "utf-8"),
-        category: category !== '' ? category : undefined,
-      })
-    }
-  })
-  return results
+export function getLoaderIcons(name: string): LoaderIcon | undefined {
+  return loaderIcons.find(icon => icon.name === name)
 }
 
-const loaderIcons = readSvgFilesRecursively(iconDir)
-
-export function getLoaderIcon(name: string): LoaderIcon | undefined {
-  try {
-    return loaderIcons.find(icon => icon.name === name)
-  } catch (error: any) {
-    throw new Error(error.message)
-  }
-}
-
-export function getLoaderIconsCategory(category: string): LoaderIcon[] {
+export function getLoaderIconsByCategory(category: string): LoaderIcon[] {
   return loaderIcons.filter(icon => icon.category === category)
 }
 
