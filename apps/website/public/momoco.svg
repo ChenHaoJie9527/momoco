@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="rainbowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF0000"/>
+      <stop offset="16.67%" stop-color="#FF7F00"/>
+      <stop offset="33.33%" stop-color="#FFFF00"/>
+      <stop offset="50%" stop-color="#00FF00"/>
+      <stop offset="66.67%" stop-color="#0000FF"/>
+      <stop offset="83.33%" stop-color="#4B0082"/>
+      <stop offset="100%" stop-color="#9400D3"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="32" height="32" rx="6" ry="6" fill="#2D3748"/>
+
+  <path d="M6 8 L16 16 L26 8 M6 8 L6 24 M26 8 L26 24"
+        stroke="url(#rainbowGradient)"
+        stroke-width="4"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"/>
+</svg>
