@@ -10,7 +10,7 @@ function App() {
   });
   return (
     <LayoutContainer>
-      <header className="flex w-full items-center justify-between">
+      <header className="flex w-full items-center justify-between container mx-auto px-4 py-4">
         <h1 className="text-2xl font-bold">我的应用</h1>
         <div className=" space-x-2">
           <Button
@@ -45,7 +45,7 @@ function App() {
         <p>这里是主要内容区域。</p>
       </section>
 
-      <footer>
+      <footer className='container mx-auto px-4 py-6'>
         <p>&copy; 2024 我的公司。保留所有权利。</p>
       </footer>
     </LayoutContainer>
