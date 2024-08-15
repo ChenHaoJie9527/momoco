@@ -1,12 +1,22 @@
 import React from 'react';
+import { cn } from '@/utils';
 
 interface Props {
   children: React.ReactNode;
   header?: React.ReactNode;
   footer?: React.ReactNode;
+  containerClass?: string;
+  headerClass?: string;
+  footerClass?: string;
+  mainClass?: string;
 }
 
-const LayoutContainer: React.FC<Props> = ({ children, header, footer }) => {
+const LayoutContainer: React.FC<Props> = ({
+  children,
+  header,
+  footer,
+  containerClass,
+}) => {
   // 将元素分成三组
   const childrenArray = React.Children.toArray(children);
   const isHeader = header
@@ -20,16 +30,16 @@ const LayoutContainer: React.FC<Props> = ({ children, header, footer }) => {
     : childrenArray.filter(child => React.isValidElement(child) && child.type === 'footer');
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {isHeader && <div className="container mx-auto px-4 py-4">{isHeader}</div>}
+    <div className={`${cn('flex flex-col min-h-screen', containerClass)}`}>
+      {isHeader && <>{isHeader}</>}
 
       {main && (
-        <main className="flex-grow ">
+        <main className={`${cn('flex-grow')}`}>
           <div className="container mx-auto px-4 py-8">{main}</div>
         </main>
       )}
 
-      {isFooter && <div className="container mx-auto px-4 py-6">{isFooter}</div>}
+      {isFooter && <>{isFooter}</>}
     </div>
   );
 };
