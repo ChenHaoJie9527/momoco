@@ -20,19 +20,19 @@ const LayoutContainer: React.FC<Props> = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen">
       {header && (
-        <header className="bg-gray-800 text-white shadow-md">
+        <header className="">
           <div className="container mx-auto px-4 py-4">{header}</div>
         </header>
       )}
 
       {main && (
-        <main className="flex-grow bg-gray-100">
+        <main className="flex-grow ">
           <div className="container mx-auto px-4 py-8">{main}</div>
         </main>
       )}
 
       {footer && (
-        <footer className="bg-gray-800 text-white">
+        <footer className="">
           <div className="container mx-auto px-4 py-6">{footer}</div>
         </footer>
       )}
