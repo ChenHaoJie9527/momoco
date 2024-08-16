@@ -2,6 +2,7 @@ import { Button } from '@headlessui/react';
 import './App.css';
 import LayoutContainer from './layout';
 import { ThemeManager } from '@theme-smooth/core';
+import JellyButton from './components/common/JellyButton';
 
 function App() {
   const themeManager = new ThemeManager({
@@ -43,6 +44,7 @@ function App() {
       <section>
         <h2 className="text-xl mb-4">欢迎来到主页面</h2>
         <p>这里是主要内容区域。</p>
+        <JellyButton>果冻</JellyButton>
       </section>
 
       <footer className='container mx-auto px-4 py-6'>
