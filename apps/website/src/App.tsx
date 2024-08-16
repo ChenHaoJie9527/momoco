@@ -9,7 +9,7 @@ function App() {
   return (
     <ThemeProvider>
       <LayoutContainer>
-        <header className="flex w-full items-center justify-between container mx-auto px-4 py-4 border-t">
+        <header className="flex w-full items-center justify-between container px-4">
           <h1 className="text-2xl font-bold">
             <Logo />
           </h1>
