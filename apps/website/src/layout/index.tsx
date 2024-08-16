@@ -30,7 +30,7 @@ const LayoutContainer: React.FC<Props> = ({
     : childrenArray.filter(child => React.isValidElement(child) && child.type === 'footer');
 
   return (
-    <div className={`${cn('flex flex-col min-h-screen', containerClass)}`}>
+    <div className={`${cn('flex flex-col min-h-screen bg-[#f5f7f9] dark:bg-[#222429] transition-all', containerClass)}`}>
       {isHeader && <>{isHeader}</>}
 
       {main && (
