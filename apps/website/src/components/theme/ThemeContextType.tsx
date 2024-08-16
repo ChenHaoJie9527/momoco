@@ -12,11 +12,13 @@ export interface ThemeContextType {
 export const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
+  const initialTheme = localStorage.getItem('theme-smooth-preference') || 'light'
   const [themeManager] = useState(
     () =>
       new ThemeManager({
         transitionDuration: 800,
-        transitionEffect: 'none'
+        transitionEffect: 'none',
+        initialTheme
       })
   );
   const [theme, setTheme] = useState(themeManager.getTheme());

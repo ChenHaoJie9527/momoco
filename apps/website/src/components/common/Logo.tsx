@@ -16,7 +16,6 @@ const Logo: React.FC<LogoProps> = ({
 }) => {
   const { theme } = useTheme();
   const color = theme === 'light' ? darkColor : lightColor;
-  console.log('color: ',  color);
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 60" width={width} height={height}>
       <text
