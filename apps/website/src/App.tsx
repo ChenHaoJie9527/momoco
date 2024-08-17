@@ -26,6 +26,15 @@ function App() {
           </div>
         </section>
 
+        <section className='w-full flex-1'>
+          <div>
+            123
+          </div>
+          <div>
+            456
+          </div>
+        </section>
+
         <footer className="container mx-auto px-4 py-6">
           <p>&copy; 2024 我的公司。保留所有权利。</p>
         </footer>
