@@ -34,8 +34,8 @@ const LayoutContainer: React.FC<Props> = ({
       {isHeader && <>{isHeader}</>}
 
       {main && (
-        <main className={`${cn('flex-grow')}`}>
-          <div className="container mx-auto px-4 py-8">{main}</div>
+        <main className={`flex flex-col ${cn('flex-grow')}`}>
+          <div className="container mx-auto px-4 py-8 flex h-full flex-col flex-1">{main}</div>
         </main>
       )}
 

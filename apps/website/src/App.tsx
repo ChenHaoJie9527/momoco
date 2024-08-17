@@ -3,9 +3,9 @@ import LayoutContainer from './layout';
 import Logo from './components/common/Logo';
 import { ThemeProvider } from './components/theme/ThemeContextType';
 import ThemeControls from './components/ThemeControls';
+import JellyButton from './components/common/JellyButton';
 
 function App() {
-
   return (
     <ThemeProvider>
       <LayoutContainer>
@@ -16,9 +16,32 @@ function App() {
           <ThemeControls />
         </header>
 
-        <section className='w-full flex flex-col items-center justify-center space-y-4 xl:py-28 lg:py-28 md:py-28 sm:py-16 sx:py-8'>
-          <h2 className="sm:text-3xl dark:text-[#fff] font-bold sx:text-xl">Out-of-the-box loading icons</h2>
-          <p className='dark:text-[#fff] '>这里是主要内容区域。</p>
+        <section className="w-full flex flex-col items-center justify-center space-y-4 xl:py-28 lg:py-28 md:py-28 sm:py-16">
+          <h2 className="sm:text-3xl dark:text-[#fff] font-bold text-2xl">
+            Out-of-the-box loading icons
+          </h2>
+          <div className="md:space-x-4">
+            <JellyButton color="sky" className="dark:text-white">
+              Get Started
+            </JellyButton>
+            <JellyButton color="gray" className="">
+              Download all
+            </JellyButton>
+          </div>
+        </section>
+
+        <section className="w-full flex-1 flex">
+          <div className=" flex flex-wrap gap-4 flex-[70%]">
+            {Array.from({ length: 100 }, (_, index) => (
+              <div
+                className="size-44 rounded bg-white dark:bg-[#292f35] dark:text-white hover:scale-110 hover:opacity-85 transition-all cursor-pointer"
+                key={index}
+              >
+                {index}
+              </div>
+            ))}
+          </div>
+          <div className="flex-[30%] dark:bg-[#292f35] bg-white dark:text-white">hahah</div>
         </section>
 
         <footer className="container mx-auto px-4 py-6">
