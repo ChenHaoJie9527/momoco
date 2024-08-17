@@ -5,6 +5,7 @@ import { ThemeProvider } from './components/theme/ThemeContextType';
 import ThemeControls from './components/ThemeControls';
 import JellyButton from './components/common/JellyButton';
 import { Input } from './components/ui/input';
+import { Spinner } from '@momoco/react';
 
 function App() {
   return (
@@ -30,10 +31,13 @@ function App() {
             </JellyButton>
           </div>
         </section>
-        <section className='sticky top-0 z-10 h-14 my-4'>
-          <Input placeholder="Search loading icons" className="shadow h-full dark:bg-[#292f35] dark:text-white" />
+        <section className="sticky top-0 z-10 h-14 my-4">
+          <Input
+            placeholder="Search loading icons"
+            className="shadow h-full dark:bg-[#292f35] dark:text-white"
+          />
         </section>
-
+        <Spinner type="circleBorder" color="secondary" />
         <section className="w-full flex-1 flex relative">
           <div className=" flex flex-wrap gap-4 flex-[70%]">
             {Array.from({ length: 100 }, (_, index) => (
