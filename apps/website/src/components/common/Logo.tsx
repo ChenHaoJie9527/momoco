@@ -16,14 +16,13 @@ const Logo: React.FC<LogoProps> = ({
 }) => {
   const { theme } = useTheme();
   const color = theme === 'light' ? darkColor : lightColor;
-  console.log('color: ',  color);
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 60" width={width} height={height}>
       <text
         x="-30"
         y="45"
         fontFamily="Arial, sans-serif"
-        fontSize="40"
+        fontSize="30"
         fontWeight="bold"
         fill={color}
         letterSpacing="1"
