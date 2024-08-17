@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '../ui/button';
 import SunSvg from '../common/SunSvg';
 import MoonSvg from '../common/MoonSvg';
-import { useTheme } from '../theme/ThemeContextType';
+import { useTheme } from '@/hooks/useTheme';
 
 const ThemeControls: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
