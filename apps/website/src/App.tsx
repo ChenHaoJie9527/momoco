@@ -4,6 +4,7 @@ import Logo from './components/common/Logo';
 import { ThemeProvider } from './components/theme/ThemeContextType';
 import ThemeControls from './components/ThemeControls';
 import JellyButton from './components/common/JellyButton';
+import { Input } from './components/ui/input';
 
 function App() {
   return (
@@ -29,19 +30,21 @@ function App() {
             </JellyButton>
           </div>
         </section>
-
         <section className="w-full flex-1 flex">
           <div className=" flex flex-wrap gap-4 flex-[70%]">
+            <Input placeholder="Search loading icons" className="h-14 sticky top-0 shadow gap-4 mr-3" />
             {Array.from({ length: 100 }, (_, index) => (
               <div
-                className="size-44 rounded bg-white dark:bg-[#292f35] dark:text-white hover:scale-110 hover:opacity-85 transition-all cursor-pointer"
+                className="size-44 rounded bg-white dark:bg-[#292f35] shadow flex items-center justify-center dark:text-white hover:scale-110 hover:opacity-85 transition-all cursor-pointer"
                 key={index}
               >
                 {index}
               </div>
             ))}
           </div>
-          <div className="flex-[30%] dark:bg-[#292f35] bg-white dark:text-white">hahah</div>
+          <div className="flex-[30%] dark:bg-[#292f35]  dark:text-white max-h-screen sticky top-0">
+            hahah
+          </div>
         </section>
 
         <footer className="container mx-auto px-4 py-6">
