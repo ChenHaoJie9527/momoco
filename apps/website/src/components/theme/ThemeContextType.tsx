@@ -1,5 +1,5 @@
 import { Theme, ThemeManager, ThemeTransitionEffect } from '@theme-smooth/core';
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useCallback, useEffect, useMemo, useState } from 'react';
 
 export interface ThemeContextType {
   theme: Theme;
@@ -70,11 +70,4 @@ export const ThemeProvider: React.FC<React.PropsWithChildren<object>> = ({ child
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };
 
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
 
-  return context;
-};

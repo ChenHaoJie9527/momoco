@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from '../theme/ThemeContextType';
+import { useTheme } from '@/hooks/useTheme';
 
 interface LogoProps {
   width?: number;
@@ -21,7 +21,7 @@ const Logo: React.FC<LogoProps> = ({
       <text
         x="-30"
         y="45"
-        fontFamily="Arial, sans-serif"
+        fontFamily="Nunito, sans-serif"
         fontSize="30"
         fontWeight="bold"
         fill={color}

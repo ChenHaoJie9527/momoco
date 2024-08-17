@@ -16,7 +16,7 @@ function App() {
           <ThemeControls />
         </header>
 
-        <section className='w-full flex flex-col items-center justify-center xl:py-28 lg:py-28 md:py-28 sm:py-16 sx:py-8'>
+        <section className='w-full flex flex-col items-center justify-center space-y-4 xl:py-28 lg:py-28 md:py-28 sm:py-16 sx:py-8'>
           <h2 className="sm:text-3xl dark:text-[#fff] font-bold sx:text-xl">Out-of-the-box loading icons</h2>
           <p className='dark:text-[#fff] '>这里是主要内容区域。</p>
         </section>
