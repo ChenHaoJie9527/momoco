@@ -5,7 +5,7 @@ import { ThemeProvider } from './components/theme/ThemeContextType';
 import ThemeControls from './components/ThemeControls';
 import JellyButton from './components/common/JellyButton';
 import { Input } from './components/ui/input';
-import { Spinner } from '@momoco/react';
+import { CircleBorder } from '@momoco/react';
 
 function App() {
   const cardList = [
@@ -13,103 +13,103 @@ function App() {
       type: 'circleBorder',
       color: 'secondary',
       name: 'circle-border',
-      content: <Spinner size="small" type="circleBorder" color="secondary" />,
+      content: <CircleBorder size="small" color="secondary" />,
     },
     {
       type: 'circle',
       color: 'secondary',
       name: 'circle',
-      content: <Spinner size="small" type="circleBorder" color="primary" />,
+      content: <CircleBorder size="small" color="primary" />,
     },
     {
       type: 'circleBorder',
       color: 'secondary',
       name: 'circle-border',
-      content: <Spinner size="small" type="circleBorder" color="secondary" />,
+      content: <CircleBorder size="small" color="secondary" />,
     },
     {
       type: 'circle',
       color: 'secondary',
       name: 'circle',
-      content: <Spinner size="small" type="circleBorder" color="primary" />,
+      content: <CircleBorder size="small" color="primary" />,
     },
     {
       type: 'circleBorder',
       color: 'secondary',
       name: 'circle-border',
-      content: <Spinner size="small" type="circleBorder" color="secondary" />,
+      content: <CircleBorder size="small" color="secondary" />,
     },
     {
       type: 'circle',
       color: 'secondary',
       name: 'circle',
-      content: <Spinner size="small" type="circleBorder" color="primary" />,
+      content: <CircleBorder size="small" color="primary" />,
     },
     {
       type: 'circleBorder',
       color: 'secondary',
       name: 'circle-border',
-      content: <Spinner size="small" type="circleBorder" color="secondary" />,
+      content: <CircleBorder size="small" color="secondary" />,
     },
     {
       type: 'circle',
       color: 'secondary',
       name: 'circle',
-      content: <Spinner size="small" type="circleBorder" color="primary" />,
+      content: <CircleBorder size="small" color="primary" />,
     },
     {
       type: 'circleBorder',
       color: 'secondary',
       name: 'circle-border',
-      content: <Spinner size="small" type="circleBorder" color="secondary" />,
+      content: <CircleBorder size="small" color="secondary" />,
     },
     {
       type: 'circle',
       color: 'secondary',
       name: 'circle',
-      content: <Spinner size="small" type="circleBorder" color="primary" />,
+      content: <CircleBorder size="small" color="primary" />,
     },
     {
       type: 'circleBorder',
       color: 'secondary',
       name: 'circle-border',
-      content: <Spinner size="small" type="circleBorder" color="secondary" />,
+      content: <CircleBorder size="small" color="secondary" />,
     },
     {
       type: 'circle',
       color: 'secondary',
       name: 'circle',
-      content: <Spinner size="small" type="circleBorder" color="primary" />,
+      content: <CircleBorder size="small" color="primary" />,
     },
     {
       type: 'circleBorder',
       color: 'secondary',
       name: 'circle-border',
-      content: <Spinner size="small" type="circleBorder" color="secondary" />,
+      content: <CircleBorder size="small" color="secondary" />,
     },
     {
       type: 'circle',
       color: 'secondary',
       name: 'circle',
-      content: <Spinner size="small" type="circleBorder" color="primary" />,
+      content: <CircleBorder size="small" color="primary" />,
     },
     {
       type: 'circleBorder',
       color: 'secondary',
       name: 'circle-border',
-      content: <Spinner size="small" type="circleBorder" color="secondary" />,
+      content: <CircleBorder size="small" color="secondary" />,
     },
     {
       type: 'circle',
       color: 'secondary',
       name: 'circle',
-      content: <Spinner size="small" type="circleBorder" color="primary" />,
+      content: <CircleBorder size="small" color="primary" />,
     },
     {
       type: 'circle',
       color: 'secondary',
       name: 'circle',
-      content: <Spinner size="small" type="circleBorder" color="primary" />,
+      content: <CircleBorder size="small" color="primary" />,
     },
   ];
 
@@ -137,7 +137,7 @@ function App() {
         </section>
         <section className="w-full flex-1 flex relative gap-2 ">
           <div className="flex-[80%]">
-            <div className='sticky top-0 pt-6 mb-6 z-10 w-full dark:bg-[#222429] bg-[#f4f6f8]'>
+            <div className="sticky top-0 pt-6 mb-6 z-10 w-full dark:bg-[#222429] bg-[#f4f6f8]">
               <Input
                 placeholder="Search loading icons"
                 className="shadow h-14 dark:bg-[#292f35] w-full dark:text-white"

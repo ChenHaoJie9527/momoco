@@ -1,13 +1,13 @@
 import { FC } from 'react';
 import styles from './styles.module.css';
-import { PresetColor } from '../../../types';
+import { PresetColor } from '@/types';
 
 export interface CircleBorderProps {
   size?: 'small' | 'medium' | 'large';
   color?: PresetColor | string;
 }
 
-const CircleBorder: FC<CircleBorderProps> = ({ size = 'medium', color = 'primary' }) => {
+export const CircleBorder: FC<CircleBorderProps> = ({ size = 'medium', color = 'primary' }) => {
   const getSize = () => {
     switch (size) {
       case 'small':
@@ -50,4 +50,4 @@ const CircleBorder: FC<CircleBorderProps> = ({ size = 'medium', color = 'primary
   );
 };
 
-export default CircleBorder;
+
