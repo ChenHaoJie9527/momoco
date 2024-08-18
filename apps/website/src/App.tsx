@@ -142,7 +142,7 @@ function App() {
             <div className="sticky top-0 pt-6 mb-6 z-10 w-full dark:bg-[#222429] bg-[#f4f6f8]">
               <Input
                 placeholder="Search loading icons"
-                className="shadow h-14 dark:bg-[#292f35] w-full dark:text-white"
+                className="shadow h-14 dark:bg-[#292f35] dark:border-[#6b7280] w-full dark:text-white"
               />
             </div>
 
