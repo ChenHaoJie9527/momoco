@@ -8,6 +8,111 @@ import { Input } from './components/ui/input';
 import { Spinner } from '@momoco/react';
 
 function App() {
+  const cardList = [
+    {
+      type: 'circleBorder',
+      color: 'secondary',
+      name: 'circle-border',
+      content: <Spinner size="small" type="circleBorder" color="secondary" />,
+    },
+    {
+      type: 'circle',
+      color: 'secondary',
+      name: 'circle',
+      content: <Spinner size="small" type="circleBorder" color="primary" />,
+    },
+    {
+      type: 'circleBorder',
+      color: 'secondary',
+      name: 'circle-border',
+      content: <Spinner size="small" type="circleBorder" color="secondary" />,
+    },
+    {
+      type: 'circle',
+      color: 'secondary',
+      name: 'circle',
+      content: <Spinner size="small" type="circleBorder" color="primary" />,
+    },
+    {
+      type: 'circleBorder',
+      color: 'secondary',
+      name: 'circle-border',
+      content: <Spinner size="small" type="circleBorder" color="secondary" />,
+    },
+    {
+      type: 'circle',
+      color: 'secondary',
+      name: 'circle',
+      content: <Spinner size="small" type="circleBorder" color="primary" />,
+    },
+    {
+      type: 'circleBorder',
+      color: 'secondary',
+      name: 'circle-border',
+      content: <Spinner size="small" type="circleBorder" color="secondary" />,
+    },
+    {
+      type: 'circle',
+      color: 'secondary',
+      name: 'circle',
+      content: <Spinner size="small" type="circleBorder" color="primary" />,
+    },
+    {
+      type: 'circleBorder',
+      color: 'secondary',
+      name: 'circle-border',
+      content: <Spinner size="small" type="circleBorder" color="secondary" />,
+    },
+    {
+      type: 'circle',
+      color: 'secondary',
+      name: 'circle',
+      content: <Spinner size="small" type="circleBorder" color="primary" />,
+    },
+    {
+      type: 'circleBorder',
+      color: 'secondary',
+      name: 'circle-border',
+      content: <Spinner size="small" type="circleBorder" color="secondary" />,
+    },
+    {
+      type: 'circle',
+      color: 'secondary',
+      name: 'circle',
+      content: <Spinner size="small" type="circleBorder" color="primary" />,
+    },
+    {
+      type: 'circleBorder',
+      color: 'secondary',
+      name: 'circle-border',
+      content: <Spinner size="small" type="circleBorder" color="secondary" />,
+    },
+    {
+      type: 'circle',
+      color: 'secondary',
+      name: 'circle',
+      content: <Spinner size="small" type="circleBorder" color="primary" />,
+    },
+    {
+      type: 'circleBorder',
+      color: 'secondary',
+      name: 'circle-border',
+      content: <Spinner size="small" type="circleBorder" color="secondary" />,
+    },
+    {
+      type: 'circle',
+      color: 'secondary',
+      name: 'circle',
+      content: <Spinner size="small" type="circleBorder" color="primary" />,
+    },
+    {
+      type: 'circle',
+      color: 'secondary',
+      name: 'circle',
+      content: <Spinner size="small" type="circleBorder" color="primary" />,
+    },
+  ];
+
   return (
     <ThemeProvider>
       <LayoutContainer>
@@ -17,7 +122,6 @@ function App() {
           </h1>
           <ThemeControls />
         </header>
-
         <section className="w-full flex flex-col items-center justify-center space-y-4 xl:py-28 lg:py-28 md:py-28 sm:py-16">
           <h2 className="sm:text-3xl dark:text-[#fff] font-bold text-2xl">
             Out-of-the-box loading icons
@@ -31,29 +135,29 @@ function App() {
             </JellyButton>
           </div>
         </section>
-        <section className="sticky top-0 z-10 h-14 my-4">
-          <Input
-            placeholder="Search loading icons"
-            className="shadow h-full dark:bg-[#292f35] dark:text-white"
-          />
-        </section>
-        <Spinner type="circleBorder" color="secondary" />
-        <section className="w-full flex-1 flex relative">
-          <div className=" flex flex-wrap gap-4 flex-[70%]">
-            {Array.from({ length: 100 }, (_, index) => (
-              <div
-                className="size-44 rounded bg-white dark:bg-[#292f35] shadow flex flex-wrap items-center justify-center dark:text-white hover:scale-110 hover:opacity-85 transition-all cursor-pointer"
-                key={index}
-              >
-                {index}
-              </div>
-            ))}
-          </div>
-          <div className="flex-[30%] min-w-80 dark:bg-[#292f35] bg-white shadow rounded dark:text-white max-h-screen h-[calc(100vh-60px)] sticky top-[60px] ">
-            hahah
-          </div>
-        </section>
+        <section className="w-full flex-1 flex relative gap-2 ">
+          <div className="flex-[80%]">
+            <div className='sticky top-0 pt-6 mb-6 z-10 w-full dark:bg-[#222429] bg-[#f4f6f8]'>
+              <Input
+                placeholder="Search loading icons"
+                className="shadow h-14 dark:bg-[#292f35] w-full dark:text-white"
+              />
+            </div>
 
+            <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+              {cardList.map((item, index) => (
+                <li key={index} className="card">
+                  <div>{item.content}</div>
+                  <div>{item.name}</div>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="flex-[20%]   dark:text-white max-h-[calc(100vh-120px)] overflow-auto sticky top-0">
+            <div>123</div>
+          </div>
+        </section>
+        ™
         <footer className="container mx-auto px-4 py-6">
           <p>&copy; 2024 我的公司。保留所有权利。</p>
         </footer>
