@@ -92,6 +92,6 @@
   }
 
   .card {
-    @apply bg-white dark:bg-[#292f35] shadow p-4 dark:text-white flex-col space-y-4 flex items-center justify-center hover:scale-105 hover:opacity-85 transition-all cursor-pointer;
+    @apply bg-white dark:bg-[#292f35] rounded shadow p-4 dark:text-white flex-col space-y-4 flex items-center justify-center hover:scale-105 hover:opacity-85 transition-all cursor-pointer;
   }
 }
