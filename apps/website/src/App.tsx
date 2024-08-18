@@ -6,8 +6,10 @@ import ThemeControls from './components/ThemeControls';
 import JellyButton from './components/common/JellyButton';
 import { Input } from './components/ui/input';
 import { CircleBorder } from '@momoco/react';
+import { useState } from 'react';
 
 function App() {
+  const [selectedCard, setSelectCard] = useState<number | null>(null);
   const cardList = [
     {
       type: 'circleBorder',
@@ -136,7 +138,7 @@ function App() {
           </div>
         </section>
         <section className="w-full flex-1 flex relative gap-2 ">
-          <div className="flex-[80%]">
+          <div className="flex-1">
             <div className="sticky top-0 pt-6 mb-6 z-10 w-full dark:bg-[#222429] bg-[#f4f6f8]">
               <Input
                 placeholder="Search loading icons"
@@ -146,15 +148,16 @@ function App() {
 
             <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
               {cardList.map((item, index) => (
-                <li key={index} className="card">
+                <li
+                  key={index}
+                  className={`card ${selectedCard === index ? 'border-2 border-[#8dc0f7] dark:border-[#fff]' : 'border-2 border-transparent'}`}
+                  onClick={() => setSelectCard(index)}
+                >
                   <div>{item.content}</div>
                   <div>{item.name}</div>
                 </li>
               ))}
             </ul>
-          </div>
-          <div className="flex-[20%]   dark:text-white max-h-[calc(100vh-120px)] overflow-auto sticky top-0">
-            <div>123</div>
           </div>
         </section>
         ™
