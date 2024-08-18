@@ -150,7 +150,7 @@ function App() {
               {cardList.map((item, index) => (
                 <li
                   key={index}
-                  className={`card ${selectedCard === index ? 'border-2 border-[#8dc0f7] dark:border-[#fff]' : 'border-2 border-transparent'}`}
+                  className={`card ${selectedCard === index ? 'border-2 border-[#8dc0f7] dark:border-[#6b7280]' : 'border-2 border-transparent'}`}
                   onClick={() => setSelectCard(index)}
                 >
                   <div>{item.content}</div>
