@@ -6,11 +6,20 @@ import ThemeControls from './components/ThemeControls';
 import JellyButton from './components/common/JellyButton';
 import { Input } from './components/ui/input';
 import { CircleBorder } from '@momoco/react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import CircleBorderModal, { CircleBorderModalRef } from './components/common/CircleBorderModal';
+
+interface CardItem {
+  type: string;
+  color: string;
+  name: string;
+  content: React.ReactNode;
+}
 
 function App() {
   const [selectedCard, setSelectCard] = useState<number | null>(null);
-  const cardList = [
+  const circleBorderModalRef = useRef<CircleBorderModalRef>(null);
+  const cardList: CardItem[] = [
     {
       type: 'circleBorder',
       color: 'secondary',
@@ -115,6 +124,13 @@ function App() {
     },
   ];
 
+  const onSelectCard = (item: CardItem, index: number) => {
+    setSelectCard(index);
+    if (item.type === 'circleBorder') {
+      circleBorderModalRef.current?.open();
+    }
+  };
+
   return (
     <ThemeProvider>
       <LayoutContainer>
@@ -139,7 +155,7 @@ function App() {
         </section>
         <section className="w-full flex-1 flex relative gap-2 ">
           <div className="flex-1">
-            <div className="sticky top-0 pt-6 mb-6 z-10 w-full dark:bg-[#222429] bg-[#f4f6f8]">
+            <div className="sticky top-0 pt-6 mb-6 z-10 w-full ">
               <Input
                 placeholder="Search loading icons"
                 className="shadow h-14 dark:bg-[#292f35] dark:border-[#6b7280] w-full dark:text-white"
@@ -151,7 +167,7 @@ function App() {
                 <li
                   key={index}
                   className={`card ${selectedCard === index ? 'border-2 border-[#8dc0f7] dark:border-[#6b7280]' : 'border-2 border-transparent'}`}
-                  onClick={() => setSelectCard(index)}
+                  onClick={() => onSelectCard(item, index)}
                 >
                   <div>{item.content}</div>
                   <div>{item.name}</div>
@@ -165,6 +181,7 @@ function App() {
           <p>&copy; 2024 我的公司。保留所有权利。</p>
         </footer>
       </LayoutContainer>
+      <CircleBorderModal ref={circleBorderModalRef} />
     </ThemeProvider>
   );
 }

@@ -1,0 +1,75 @@
+import { forwardRef, Ref, useImperativeHandle, useState } from 'react';
+import { Dialog, DialogPanel } from '@headlessui/react';
+import { CircleBorder } from '@momoco/react';
+
+interface CircleBorderModalProps {
+  size?: 'small' | 'medium' | 'large';
+  color?: 'primary' | 'secondary';
+}
+
+export type CircleBorderModalRef = {
+  open: () => void;
+  close: () => void;
+};
+
+function CircleBorderModal(
+  { size: initialSize = 'medium', color: initialColor = 'primary' }: CircleBorderModalProps,
+  ref: Ref<CircleBorderModalRef>
+) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [size, setSize] = useState(initialSize);
+  const [color, setColor] = useState(initialColor);
+  const [backgroundColor, setBackgroundColor] = useState('#ffffff');
+
+  useImperativeHandle(ref, () => ({
+    open: () => setIsOpen(true),
+    close: () => setIsOpen(false),
+  }));
+
+  const handleCopy = () => {
+    // Implement copy functionality here
+    console.log('Copied!');
+  };
+
+  return (
+    <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="relative z-50">
+      <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+      <div className="fixed inset-0 flex items-center justify-center p-4">
+        <DialogPanel className="mx-auto rounded flex sm:flex-row md:w-[768px] lg:w-[1024px] xl:w-[1280px] sm:w-[640px] bg-white p-6 shadow-xl dark:bg-[#25282e]">
+          <div className="flex justify-center items-center w-1/2" style={{ backgroundColor }}>
+            <CircleBorder size={size} color={color} />
+          </div>
+          <div className='w-1/2 pl-6 flex flex-col justify-between'>
+            <div>
+              <h3 className="text-lg font-medium mb-4">Customize CircleBorder</h3>
+              <div className="mb-4">
+                <label className="block mb-2">Line Color:</label>
+                <select value={color} onChange={(e) => setColor(e.target.value as 'primary' | 'secondary')} className="w-full p-2 border rounded">
+                  <option value="primary">Primary</option>
+                  <option value="secondary">Secondary</option>
+                </select>
+              </div>
+              <div className="mb-4">
+                <label className="block mb-2">Background Color:</label>
+                <input type="color" value={backgroundColor} onChange={(e) => setBackgroundColor(e.target.value)} className="w-full p-1 border rounded" />
+              </div>
+              <div className="mb-4">
+                <label className="block mb-2">Size:</label>
+                <select value={size} onChange={(e) => setSize(e.target.value as 'small' | 'medium' | 'large')} className="w-full p-2 border rounded">
+                  <option value="small">Small</option>
+                  <option value="medium">Medium</option>
+                  <option value="large">Large</option>
+                </select>
+              </div>
+            </div>
+            <button onClick={handleCopy} className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+              Copy
+            </button>
+          </div>
+        </DialogPanel>
+      </div>
+    </Dialog>
+  );
+}
+
+export default forwardRef(CircleBorderModal);
