@@ -2,6 +2,7 @@ import { forwardRef, Ref, useImperativeHandle, useState } from 'react';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { CircleBorder } from '@momoco/react';
 import JellyButton from './JellyButton';
+import SelectLineColor from './SelectLineColor';
 
 interface CircleBorderModalProps {
   size?: 'small' | 'medium' | 'large';
@@ -21,6 +22,11 @@ function CircleBorderModal(
   const [size, setSize] = useState(initialSize);
   const [color, setColor] = useState(initialColor);
   const [backgroundColor, setBackgroundColor] = useState('#ffffff');
+  const [selectedValue, setSelectedValue] = useState('primary');
+  const options = [
+    { value: 'primary', label: 'Primary' },
+    { value: 'secondary', label: 'Secondary' },
+  ];
 
   useImperativeHandle(ref, () => ({
     open: () => setIsOpen(true),
@@ -45,14 +51,15 @@ function CircleBorderModal(
               <h3 className="text-lg font-medium mb-4 dark:text-white">Customize CircleBorder</h3>
               <div className="mb-4">
                 <label className="block mb-2 dark:text-white">Line Color:</label>
-                <select
-                  value={color}
-                  onChange={e => setColor(e.target.value as 'primary' | 'secondary')}
-                  className="w-full p-2 border rounded"
-                >
-                  <option value="primary">Primary</option>
-                  <option value="secondary">Secondary</option>
-                </select>
+                <SelectLineColor
+
+                  options={options}
+                  value={selectedValue}
+                  label="Line Color"
+                  onChange={e => {
+                    setSelectedValue(e)
+                  }}
+                />
               </div>
               <div className="mb-4">
                 <label className="block mb-2 dark:text-white">Background Color:</label>
