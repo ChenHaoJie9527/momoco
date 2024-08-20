@@ -15,12 +15,11 @@ export type CircleBorderModalRef = {
 };
 
 function CircleBorderModal(
-  { size: initialSize = 'medium', color: initialColor = 'primary' }: CircleBorderModalProps,
+  { size: initialSize = 'medium' }: CircleBorderModalProps,
   ref: Ref<CircleBorderModalRef>
 ) {
   const [isOpen, setIsOpen] = useState(false);
   const [size, setSize] = useState(initialSize);
-  const [color, setColor] = useState(initialColor);
   const [backgroundColor, setBackgroundColor] = useState('#ffffff');
   const [selectedValue, setSelectedValue] = useState('primary');
   const options = [
@@ -44,7 +43,7 @@ function CircleBorderModal(
       <div className="fixed inset-0 flex items-center justify-center p-4">
         <DialogPanel className="mx-auto rounded flex sm:flex-row md:w-[768px] lg:w-[860px] xl:w-[1080px] sm:w-[640px] bg-white p-6 shadow-xl dark:bg-[#25282e]">
           <div className="flex justify-center items-center w-1/2">
-            <CircleBorder size={size} color={color} />
+            <CircleBorder size={size} color={selectedValue} />
           </div>
           <div className="w-1/2 pl-6 flex flex-col justify-between">
             <div>
@@ -52,12 +51,11 @@ function CircleBorderModal(
               <div className="mb-4">
                 <label className="block mb-2 dark:text-white">Line Color:</label>
                 <SelectLineColor
-
                   options={options}
                   value={selectedValue}
                   label="Line Color"
                   onChange={e => {
-                    setSelectedValue(e)
+                    setSelectedValue(e);
                   }}
                 />
               </div>
