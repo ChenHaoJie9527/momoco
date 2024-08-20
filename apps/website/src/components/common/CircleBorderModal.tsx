@@ -1,6 +1,7 @@
 import { forwardRef, Ref, useImperativeHandle, useState } from 'react';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { CircleBorder } from '@momoco/react';
+import JellyButton from './JellyButton';
 
 interface CircleBorderModalProps {
   size?: 'small' | 'medium' | 'large';
@@ -35,36 +36,63 @@ function CircleBorderModal(
     <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="relative z-50">
       <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
       <div className="fixed inset-0 flex items-center justify-center p-4">
-        <DialogPanel className="mx-auto rounded flex sm:flex-row md:w-[768px] lg:w-[1024px] xl:w-[1280px] sm:w-[640px] bg-white p-6 shadow-xl dark:bg-[#25282e]">
-          <div className="flex justify-center items-center w-1/2" style={{ backgroundColor }}>
+        <DialogPanel className="mx-auto rounded flex sm:flex-row md:w-[768px] lg:w-[860px] xl:w-[1080px] sm:w-[640px] bg-white p-6 shadow-xl dark:bg-[#25282e]">
+          <div className="flex justify-center items-center w-1/2">
             <CircleBorder size={size} color={color} />
           </div>
-          <div className='w-1/2 pl-6 flex flex-col justify-between'>
+          <div className="w-1/2 pl-6 flex flex-col justify-between">
             <div>
-              <h3 className="text-lg font-medium mb-4">Customize CircleBorder</h3>
+              <h3 className="text-lg font-medium mb-4 dark:text-white">Customize CircleBorder</h3>
               <div className="mb-4">
-                <label className="block mb-2">Line Color:</label>
-                <select value={color} onChange={(e) => setColor(e.target.value as 'primary' | 'secondary')} className="w-full p-2 border rounded">
+                <label className="block mb-2 dark:text-white">Line Color:</label>
+                <select
+                  value={color}
+                  onChange={e => setColor(e.target.value as 'primary' | 'secondary')}
+                  className="w-full p-2 border rounded"
+                >
                   <option value="primary">Primary</option>
                   <option value="secondary">Secondary</option>
                 </select>
               </div>
               <div className="mb-4">
-                <label className="block mb-2">Background Color:</label>
-                <input type="color" value={backgroundColor} onChange={(e) => setBackgroundColor(e.target.value)} className="w-full p-1 border rounded" />
+                <label className="block mb-2 dark:text-white">Background Color:</label>
+                <input
+                  type="color"
+                  value={backgroundColor}
+                  onChange={e => setBackgroundColor(e.target.value)}
+                  className="w-full p-1 border rounded"
+                />
               </div>
               <div className="mb-4">
-                <label className="block mb-2">Size:</label>
-                <select value={size} onChange={(e) => setSize(e.target.value as 'small' | 'medium' | 'large')} className="w-full p-2 border rounded">
+                <label className="block mb-2 dark:text-white">Size:</label>
+                <select
+                  value={size}
+                  onChange={e => setSize(e.target.value as 'small' | 'medium' | 'large')}
+                  className="w-full p-2 border rounded"
+                >
                   <option value="small">Small</option>
                   <option value="medium">Medium</option>
                   <option value="large">Large</option>
                 </select>
               </div>
             </div>
-            <button onClick={handleCopy} className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
-              Copy
-            </button>
+            <div className="flex gap-2 ">
+              <JellyButton size="small" color="sky" onClick={handleCopy}>
+                Copy HTML
+              </JellyButton>
+              <JellyButton size="small" color="fuchsia" onClick={handleCopy}>
+                Copy Vue
+              </JellyButton>
+              <JellyButton size="small" color="green" onClick={handleCopy}>
+                Copy React
+              </JellyButton>
+              <JellyButton size="small" color="red" onClick={handleCopy}>
+                Copy Svelte
+              </JellyButton>
+              <JellyButton size="small" color="blue" onClick={handleCopy}>
+                Copy Angular
+              </JellyButton>
+            </div>
           </div>
         </DialogPanel>
       </div>

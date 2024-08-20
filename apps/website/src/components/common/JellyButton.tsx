@@ -2,11 +2,13 @@ import React from 'react';
 
 interface JellyButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   color?: 'blue' | 'green' | 'red' | 'purple' | 'gray' | 'fuchsia' | 'sky';
+  size?: 'small' | 'medium' | 'large';
 }
 
 const JellyButton: React.FC<JellyButtonProps> = ({
   children,
   color = 'blue',
+  size = 'medium',
   className = '',
   ...props
 }) => {
@@ -21,9 +23,15 @@ const JellyButton: React.FC<JellyButtonProps> = ({
     sky: 'before:bg-sky-400 focus:ring-sky-400'
   };
 
+  const sizeClasses: Record<string, string> = {
+    small: 'text-sm py-1 px-2',
+    medium: 'text-base py-2 px-4',
+    large: 'text-lg py-3 px-6'
+  };
+
   return (
     <button
-      className={`jelly-button  ${colorClasses[color]} ${className}`}
+      className={`jelly-button dark:text-white ${colorClasses[color]} ${sizeClasses[size]} ${className}`}
       {...props}
     >
       <span className="relative z-10">{children}</span>
