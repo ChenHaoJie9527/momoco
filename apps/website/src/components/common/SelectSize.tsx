@@ -16,7 +16,7 @@ interface Size {
 interface SelectSizeProps {
   sizes: Size[];
   defaultSize?: Size;
-  onChange?: (size: Size) => void;
+  onChange?: (size: string) => void;
 }
 
 function SelectSize({ sizes, defaultSize, onChange }: SelectSizeProps) {
@@ -26,7 +26,7 @@ function SelectSize({ sizes, defaultSize, onChange }: SelectSizeProps) {
       value={selectedSize}
       onChange={value => {
         setSelectedSize(value);
-        onChange?.(value);
+        onChange?.(value.value);
       }}
     >
       <div className="relative mt-1">

@@ -6,7 +6,7 @@ import SelectLineColor from './SelectLineColor';
 import SelectSize from './SelectSize';
 
 interface CircleBorderModalProps {
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | string;
   color?: 'primary' | 'secondary';
 }
 
@@ -76,7 +76,13 @@ function CircleBorderModal(
               </div>
               <div className="mb-4">
                 <label className="block mb-2 dark:text-white">Size:</label>
-                <SelectSize sizes={graphSizes} defaultSize={graphSizes[1]} />
+                <SelectSize
+                  sizes={graphSizes}
+                  defaultSize={graphSizes[1]}
+                  onChange={e => {
+                    setSize(e);
+                  }}
+                />
               </div>
             </div>
             <div className="flex gap-2 ">
