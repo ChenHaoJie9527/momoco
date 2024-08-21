@@ -1,23 +1,37 @@
 import { Fragment, useState } from 'react';
-import { Listbox, Transition, ListboxOptions, ListboxButton, ListboxOption } from '@headlessui/react';
+import {
+  Listbox,
+  Transition,
+  ListboxOptions,
+  ListboxButton,
+  ListboxOption,
+} from '@headlessui/react';
 import { ChevronsUpDown, Check } from 'lucide-react';
 
-const sizes = [
-  { name: 'XS', value: 'xs' },
-  { name: 'S', value: 's' },
-  { name: 'M', value: 'm' },
-  { name: 'L', value: 'l' },
-  { name: 'XL', value: 'xl' },
-];
+interface Size {
+  name: string;
+  value: string;
+}
 
-function SelectSize() {
-  const [selectedSize, setSelectedSize] = useState(sizes[2]);
+interface SelectSizeProps {
+  sizes: Size[];
+  defaultSize?: Size;
+  onChange?: (size: Size) => void;
+}
 
+function SelectSize({ sizes, defaultSize, onChange }: SelectSizeProps) {
+  const [selectedSize, setSelectedSize] = useState(defaultSize || sizes[0]);
   return (
-    <Listbox value={selectedSize} onChange={setSelectedSize}>
+    <Listbox
+      value={selectedSize}
+      onChange={value => {
+        setSelectedSize(value);
+        onChange?.(value);
+      }}
+    >
       <div className="relative mt-1">
-        <ListboxButton className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-          <span className="block truncate">{selectedSize.name}</span>
+        <ListboxButton className="relative w-full cursor-default rounded bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+          <span className="block truncate dark:text-[#000]">{selectedSize.name}</span>
           <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
             <ChevronsUpDown className="h-5 w-5 text-gray-400" aria-hidden="true" />
           </span>
@@ -28,8 +42,8 @@ function SelectSize() {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <ListboxOptions className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-            {sizes.map((size) => (
+          <ListboxOptions className="absolute mt-1 max-h-60 w-full overflow-auto rounded bg-white text-base z-50 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+            {sizes.map(size => (
               <ListboxOption
                 key={size.value}
                 className={({ active }) =>

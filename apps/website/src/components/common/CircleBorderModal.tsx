@@ -3,6 +3,7 @@ import { Dialog, DialogPanel } from '@headlessui/react';
 import { CircleBorder } from '@momoco/react';
 import JellyButton from './JellyButton';
 import SelectLineColor from './SelectLineColor';
+import SelectSize from './SelectSize';
 
 interface CircleBorderModalProps {
   size?: 'small' | 'medium' | 'large';
@@ -13,7 +14,16 @@ export type CircleBorderModalRef = {
   open: () => void;
   close: () => void;
 };
+const options = [
+  { value: 'primary', label: 'Primary' },
+  { value: 'secondary', label: 'Secondary' },
+];
 
+const graphSizes = [
+  { name: 'Small', value: 'small' },
+  { name: 'Medium', value: 'medium' },
+  { name: 'Large', value: 'large' },
+];
 function CircleBorderModal(
   { size: initialSize = 'medium' }: CircleBorderModalProps,
   ref: Ref<CircleBorderModalRef>
@@ -22,10 +32,6 @@ function CircleBorderModal(
   const [size, setSize] = useState(initialSize);
   const [backgroundColor, setBackgroundColor] = useState('#ffffff');
   const [selectedValue, setSelectedValue] = useState('primary');
-  const options = [
-    { value: 'primary', label: 'Primary' },
-    { value: 'secondary', label: 'Secondary' },
-  ];
 
   useImperativeHandle(ref, () => ({
     open: () => setIsOpen(true),
@@ -70,15 +76,7 @@ function CircleBorderModal(
               </div>
               <div className="mb-4">
                 <label className="block mb-2 dark:text-white">Size:</label>
-                <select
-                  value={size}
-                  onChange={e => setSize(e.target.value as 'small' | 'medium' | 'large')}
-                  className="w-full p-2 border rounded"
-                >
-                  <option value="small">Small</option>
-                  <option value="medium">Medium</option>
-                  <option value="large">Large</option>
-                </select>
+                <SelectSize sizes={graphSizes} defaultSize={graphSizes[1]} />
               </div>
             </div>
             <div className="flex gap-2 ">
